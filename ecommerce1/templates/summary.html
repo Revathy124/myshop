@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Order Summary</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">Shop Detail </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+<!-- Start Card -->
+<h2 class="text-center">Name of Customer:{{user.username}}</h2>
+{% for i in orders %}
+    {% for j in i.items.all %}
+<div class="card mb-3 mx-auto" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{j.product.image.url }}" class="rounded-start p-3" height="200px" width="100%" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title fs-5 ">Product Name:{{j.product.name}}</h5>
+        <p class="card-text">Price:{{j.product.price}}</p>
+        <p class="card-text">No_of_items:{{j.quantity}}</p>
+        <p class="card-text">Order_id:{{i.order_id}}</p>
+        <p class="card-text">Ordered_on:<span class="text-success">{{i.ordered_date}}</span></p>
+        <p class="card-text">deliver_status:<span class="text-danger">{{i.ordered_date}}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endfor %}
+<!-- End All Card -->
+
+{% endblock %}

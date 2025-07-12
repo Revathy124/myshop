@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>OTP Verification</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">OTP Verification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<form method="POST" class="container w-50 mx-auto">
+    <h2>Enter OTP</h2>
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="text" name="otp">
+    <input type="submit">
+</form>
+{% endblock %}
